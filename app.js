@@ -15,7 +15,18 @@ var mainLoop = function() {
 }
 	function createBasicCard() {
 		console.log("create basic card");
-		//mainLoop();
+		inquirer.prompt([{
+			name:'question',
+			type: 'input',
+			message: 'enter the question'
+		},{
+			name: 'answer0',
+			type: 'input',
+			message: 'enter answer',
+           }]).then((answers)=> {
+           	console.log(answers.question);
+           });
+           //mainLoop()		
 	}
 	function createClozeCard() {
 		console.log("create cloecard");
