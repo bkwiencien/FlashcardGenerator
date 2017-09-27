@@ -2,6 +2,7 @@ var inquirer = require("inquirer");
 var done = false;
 var BasicCard = require("./BasicCard");
 var clozecard = require("./ClozeCard");
+var fs = require("fs");
 var mainLoop = function() {
  inquirer.prompt([{
    	name: 'fnct',
@@ -9,9 +10,11 @@ var mainLoop = function() {
 	message: "What do you want to do?",
 	choices: ['create basic card','create cloze card','exit'],
 	}]).then((answers)=> {
-		console.log("I got here " + answers.fnct);
 		if (answers.fnct == "create basic card"){
 			createBasicCard();
+		}
+		if (answers.fnct == "create cloze card"){
+			createClozeCard();
 		}
 	});
 }
@@ -51,13 +54,37 @@ var mainLoop = function() {
            	myquestion = answers.question;
            	myanswer   = answers.answer0;
            	var toto = new BasicCard(myquestion,myanswer);
-           	console.log("in toto " + toto.front);
            	toto.logit();
            	mainLoop();
            });	
 	}
 	function createClozeCard() {
-		console.log("create cloecard");
+		var myFullQuestion = "";
+		var myCloze = "";
+		console.log("create clozecard");
+		inquirer.prompt([{
+			name: 'fullquestion',
+			type: 'input',
+			message: 'enter full question',
+	      },{
+            name: 'clozepart',
+            type: 'input',
+            message: 'enter cloze',
+		}]).then((answers)=> {
+			myFullQuestion = answers.fullquestion;
+			myCloze        = answers.clozepart;
+			console.log(answers.fullquestion);
+			console.log("myCloze = " + myCloze);
+			logError("just a test error");
+		});
 		//mainLoop();
+	}
+	function logError(erro){
+		console.log("Error " + erro);
+		fs.appendFile("error.txt", erro + '\n', "utf8", function(error) {
+            if (error) {
+                console.log(error);
+            }
+        });
 	}
 	mainLoop();
