@@ -83,7 +83,7 @@ var mainLoop = function() {
             message: 'enter cloze',
             validate: function(input) {
                     if (input === '') {
-                        console.log('Please the cloze');
+                        console.log('Please input the cloze');
                         return false;
                     } else {
                         return true;
