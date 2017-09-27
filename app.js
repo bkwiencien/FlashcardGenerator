@@ -1,5 +1,7 @@
 var inquirer = require("inquirer");
 var done = false;
+var BasicCard = require("./BasicCard");
+var clozecard = require("./ClozeCard");
 var mainLoop = function() {
  inquirer.prompt([{
    	name: 'fnct',
@@ -14,6 +16,8 @@ var mainLoop = function() {
 	});
 }
 	function createBasicCard() {
+		var myanswer = ""; 
+		var myquestion = "";
 		console.log("create basic card");
 		inquirer.prompt([{
 			name:'question',
@@ -25,6 +29,11 @@ var mainLoop = function() {
 			message: 'enter answer',
            }]).then((answers)=> {
            	console.log(answers.question);
+           	console.log(answers.answer0);
+           	myquestion = answers.question;
+           	myanswer   = answers.answer0;
+           	var toto = new BasicCard(myquestion,myanswer);
+           	console.log("in toto " + toto.front);
            });
            //mainLoop()		
 	}
