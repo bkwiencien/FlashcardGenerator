@@ -22,11 +22,29 @@ var mainLoop = function() {
 		inquirer.prompt([{
 			name:'question',
 			type: 'input',
-			message: 'enter the question'
+			message: 'enter the question',
+			validate: function(input) {
+                    if (input === '') {
+                        console.log('Please provide a question');
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+
 		},{
 			name: 'answer0',
 			type: 'input',
 			message: 'enter answer',
+			validate: function(input) {
+                    if (input === '') {
+                        console.log('Please provide an answer');
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+
            }]).then((answers)=> {
            	console.log(answers.question);
            	console.log(answers.answer0);
