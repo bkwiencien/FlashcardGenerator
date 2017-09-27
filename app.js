@@ -91,7 +91,6 @@ var mainLoop = function() {
 			myCloze        = answers.clozepart;
 			console.log(answers.fullquestion);
 			console.log("myCloze = " + myCloze);
-			logError("just a test error");
 		});
 		//mainLoop();
 	}
