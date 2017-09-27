@@ -4,3 +4,4 @@
 {"front":"what","back":"left","type":"basic"};
 {"front":"color","back":"blue","type":"basic"};
 {"front":"what","back":"1","type":"basic"};
+{"front":"who was the first president","back":"george washington","type":"basic"};

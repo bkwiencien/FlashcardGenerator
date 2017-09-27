@@ -66,10 +66,26 @@ var mainLoop = function() {
 			name: 'fullquestion',
 			type: 'input',
 			message: 'enter full question',
+			validate: function(input) {
+                    if (input === '') {
+                        console.log('Please provide a question');
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
 	      },{
             name: 'clozepart',
             type: 'input',
             message: 'enter cloze',
+            validate: function(input) {
+                    if (input === '') {
+                        console.log('Please the cloze');
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
 		}]).then((answers)=> {
 			myFullQuestion = answers.fullquestion;
 			myCloze        = answers.clozepart;
