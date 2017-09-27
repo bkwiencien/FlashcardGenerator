@@ -10,7 +10,7 @@ function BasicCard(pfront,pback) {
             type: "basic",
         };
     this.logit = function() {
-        fs.appendFile("log.txt", JSON.stringify(data) + ';', "utf8", function(error) {
+        fs.appendFile("log.txt", JSON.stringify(data) + ';\n', "utf8", function(error) {
             if (error) {
                 console.log(error);
             }

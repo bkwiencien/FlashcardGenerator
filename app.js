@@ -35,8 +35,8 @@ var mainLoop = function() {
            	var toto = new BasicCard(myquestion,myanswer);
            	console.log("in toto " + toto.front);
            	toto.logit();
-           });
-           //mainLoop()		
+           	mainLoop();
+           });	
 	}
 	function createClozeCard() {
 		console.log("create cloecard");
