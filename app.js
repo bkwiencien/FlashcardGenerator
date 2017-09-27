@@ -34,6 +34,7 @@ var mainLoop = function() {
            	myanswer   = answers.answer0;
            	var toto = new BasicCard(myquestion,myanswer);
            	console.log("in toto " + toto.front);
+           	toto.logit();
            });
            //mainLoop()		
 	}

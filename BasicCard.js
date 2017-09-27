@@ -9,4 +9,12 @@ function BasicCard(pfront,pback) {
             back: this.back,
             type: "basic",
         };
+    this.logit = function() {
+        fs.appendFile("log.txt", JSON.stringify(data) + ';', "utf8", function(error) {
+            if (error) {
+                console.log(error);
+            }
+        });
+    };
+    
 }
