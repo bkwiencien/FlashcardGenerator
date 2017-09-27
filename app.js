@@ -1,7 +1,7 @@
 var inquirer = require("inquirer");
 var done = false;
 var BasicCard = require("./BasicCard");
-var clozecard = require("./ClozeCard");
+var ClozeCard = require("./ClozeCard");
 var fs = require("fs");
 var mainLoop = function() {
  inquirer.prompt([{
@@ -61,6 +61,7 @@ var mainLoop = function() {
 	function createClozeCard() {
 		var myFullQuestion = "";
 		var myCloze = "";
+		var myPartial = "";
 		console.log("create clozecard");
 		inquirer.prompt([{
 			name: 'fullquestion',
@@ -89,8 +90,12 @@ var mainLoop = function() {
 		}]).then((answers)=> {
 			myFullQuestion = answers.fullquestion;
 			myCloze        = answers.clozepart;
+			myPartial = myFullQuestion.replace(myCloze, '_____');
+			var clozeObj = new ClozeCard(myFullQuestion,myCloze,myPartial);
+			clozeObj.logit();
 			console.log(answers.fullquestion);
 			console.log("myCloze = " + myCloze);
+			mainLoop();
 		});
 		//mainLoop();
 	}
