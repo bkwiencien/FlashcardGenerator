@@ -1,0 +1,22 @@
+{
+  "name": "glashcardgenerator",
+  "version": "1.0.0",
+  "description": "Advanced JavaScript Assignment: Cloze Constructors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bkwiencien/FlashcardGenerator.git"
+  },
+  "author": "Bob Kwiencien",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bkwiencien/FlashcardGenerator/issues"
+  },
+  "homepage": "https://github.com/bkwiencien/FlashcardGenerator#readme",
+  "dependencies": {
+    "inquire": "^0.4.8"
+  }
+}
