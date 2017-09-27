@@ -62,6 +62,8 @@ var mainLoop = function() {
 		var myFullQuestion = "";
 		var myCloze = "";
 		var myPartial = "";
+		var indexo = 0;
+		var errMessage = "";
 		console.log("create clozecard");
 		inquirer.prompt([{
 			name: 'fullquestion',
@@ -90,14 +92,18 @@ var mainLoop = function() {
 		}]).then((answers)=> {
 			myFullQuestion = answers.fullquestion;
 			myCloze        = answers.clozepart;
-			myPartial = myFullQuestion.replace(myCloze, '_____');
-			var clozeObj = new ClozeCard(myFullQuestion,myCloze,myPartial);
-			clozeObj.logit();
-			console.log(answers.fullquestion);
-			console.log("myCloze = " + myCloze);
-			mainLoop();
+			myPartial = myFullQuestion.replace(myCloze, '.....');
+			indexo = myFullQuestion.indexOf(myCloze);
+			if (indexo > 0 ){
+			  var clozeObj = new ClozeCard(myFullQuestion,myCloze,myPartial);
+			  clozeObj.logit();
+			} else {
+               errMessage = "cloze " + myCloze + " not found in string";
+               logError(errMessage);
+               console.log("cloze not found in string");
+			}  
+			//mainLoop();
 		});
-		//mainLoop();
 	}
 	function logError(erro){
 		console.log("Error " + erro);
