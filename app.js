@@ -94,7 +94,7 @@ var mainLoop = function() {
 			myCloze        = answers.clozepart;
 			myPartial = myFullQuestion.replace(myCloze, '.....');
 			indexo = myFullQuestion.indexOf(myCloze);
-			if (indexo > 0 ){
+			if (indexo > -1 ){
 			  var clozeObj = new ClozeCard(myFullQuestion,myCloze,myPartial);
 			  clozeObj.logit();
 			} else {
@@ -102,7 +102,7 @@ var mainLoop = function() {
                logError(errMessage);
                console.log("cloze not found in string");
 			}  
-			//mainLoop();
+			mainLoop();
 		});
 	}
 	function logError(erro){
