@@ -23,7 +23,6 @@ var mainLoop = function() {
 	function createBasicCard() {
 		var myanswer = ""; 
 		var myquestion = "";
-		console.log("create basic card");
 		inquirer.prompt([{
 			name:'question',
 			type: 'input',
@@ -51,8 +50,6 @@ var mainLoop = function() {
                 }
 
            }]).then((answers)=> {
-           	console.log(answers.question);
-           	console.log(answers.answer0);
            	myquestion = answers.question;
            	myanswer   = answers.answer0;
            	var toto = new BasicCard(myquestion,myanswer);
@@ -67,7 +64,6 @@ var mainLoop = function() {
 		var myPartial = "";
 		var indexo = 0;
 		var errMessage = "";
-		console.log("create clozecard");
 		inquirer.prompt([{
 			name: 'fullquestion',
 			type: 'input',
@@ -104,14 +100,12 @@ var mainLoop = function() {
 			} else {
                errMessage = "cloze " + myCloze + " not found in string";
                logError(errMessage);
-               console.log("cloze not found in string");
                status = "status: last operstion failed " + errMessage;
 			}  
 			mainLoop();
 		});
 	}
 	function logError(erro){
-		console.log("Error " + erro);
 		fs.appendFile("error.txt", erro + '\n', "utf8", function(error) {
             if (error) {
                 console.log(error);
