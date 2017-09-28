@@ -3,7 +3,9 @@ var done = false;
 var BasicCard = require("./BasicCard");
 var ClozeCard = require("./ClozeCard");
 var fs = require("fs");
+var status = "";
 var mainLoop = function() {
+ console.log(status);
  inquirer.prompt([{
    	name: 'fnct',
 	type: 'list',
@@ -55,6 +57,7 @@ var mainLoop = function() {
            	myanswer   = answers.answer0;
            	var toto = new BasicCard(myquestion,myanswer);
            	toto.logit();
+           	status = "status: success";
            	mainLoop();
            });	
 	}
@@ -97,10 +100,12 @@ var mainLoop = function() {
 			if (indexo > -1 ){
 			  var clozeObj = new ClozeCard(myFullQuestion,myCloze,myPartial);
 			  clozeObj.logit();
+			  status = "status: success";
 			} else {
                errMessage = "cloze " + myCloze + " not found in string";
                logError(errMessage);
                console.log("cloze not found in string");
+               status = "status: last operstion failed " + errMessage;
 			}  
 			mainLoop();
 		});
