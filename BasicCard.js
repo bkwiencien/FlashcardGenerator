@@ -1,4 +1,7 @@
 var fs = require("fs");
+var os = require("os");
+var myOs = "";
+var eline = "\n";
 module.exports = BasicCard;
 function BasicCard(pfront,pback) {
 	this.front = pfront;
@@ -10,7 +13,7 @@ function BasicCard(pfront,pback) {
             type: "basic",
         };
     this.logit = function() {
-        fs.appendFile("log.txt", JSON.stringify(data) + ';\n', "utf8", function(error) {
+        fs.appendFile("log.txt", JSON.stringify(data) + ';' + eline, "utf8", function(error) {
             if (error) {
                 console.log(error);
             }

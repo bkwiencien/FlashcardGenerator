@@ -1,4 +1,7 @@
 var fs = require("fs");
+var eline = "\n";
+var os = require("os");
+var myOs = "";
 module.exports = ClozeCard;
 function ClozeCard(text,cloze,partial) {
     this.fullText = text
@@ -12,7 +15,7 @@ function ClozeCard(text,cloze,partial) {
             type: "clozen",
         };
     this.logit = function() {
-        fs.appendFile("log.txt", JSON.stringify(data) + ';\n', "utf8", function(error) {
+        fs.appendFile("log.txt", JSON.stringify(data) + ';' + eline, "utf8", function(error) {
             if (error) {
                 console.log(error);
             }

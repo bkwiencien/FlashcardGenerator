@@ -3,6 +3,8 @@ var done = false;
 var BasicCard = require("./BasicCard");
 var ClozeCard = require("./ClozeCard");
 var fs = require("fs");
+var os = require("os");
+var eline = "\n";
 var status = "";
 var mainLoop = function() {
  console.log(status);
@@ -106,10 +108,41 @@ var mainLoop = function() {
 		});
 	}
 	function logError(erro){
-		fs.appendFile("error.txt", erro + '\n', "utf8", function(error) {
+		fs.appendFile("error.txt", erro + eline, "utf8", function(error) {
             if (error) {
                 console.log(error);
             }
         });
 	}
+	determineOS();
 	mainLoop();
+	function determineOS() {
+	   var array = ["BasisCard","ClozeCard"];
+	   var obj =  "";
+	   var myOs = os.platform();
+       if (myOs == "darwin") {
+       	  eline = "\n";
+       } else {
+       	  eline = "\r\n";
+       }
+       	 BasicCard.prototype.determineOS = function(){
+       	 	this.myOS = os.platform
+       	 	if (this.myOS == "darwin"){
+       	 		this.eline = "\n";
+       	 	} else {
+       	 		this.eline = "\r\n";
+       	 	}
+
+       	 };
+       	 ClozeCard.prototype.determineOS = function(){
+       	 	this.myOS = os.platform
+       	 	if (this.myOS == "darwin"){
+       	 		this.eline = "\n";
+       	 	} else {
+       	 		this.eline = "\r\n";
+       	 	}
+
+       	 };
+       BasicCard.prototype.determineOS();
+       ClozeCard.prototype.determineOS();
+	}
