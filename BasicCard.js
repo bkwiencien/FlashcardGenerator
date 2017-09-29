@@ -1,7 +1,7 @@
 var fs = require("fs");
 var os = require("os");
 var myOs = "";
-var eline = "\n";
+var eline = "\n"; //default for mac prototypoe will check what os in use
 module.exports = BasicCard;
 function BasicCard(pfront,pback) {
 	this.front = pfront;

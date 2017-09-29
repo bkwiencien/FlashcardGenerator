@@ -1,5 +1,5 @@
 var fs = require("fs");
-var eline = "\n";
+var eline = "\n";  //default for mac prototypoe will check what os in use
 var os = require("os");
 var myOs = "";
 module.exports = ClozeCard;
