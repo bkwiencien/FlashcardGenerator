@@ -12,7 +12,7 @@ var mainLoop = function() {
    	name: 'fnct',
 	type: 'list',
 	message: "What do you want to do?",
-	choices: ['create basic card','create cloze card','clear questions','exit'],
+	choices: ['create basic card','create cloze card','clear questions','study','exit'],
 	}]).then((answers)=> {
 		if (answers.fnct == "create basic card"){
 			createBasicCard();
@@ -22,6 +22,9 @@ var mainLoop = function() {
 		}
     if (answers.fnct == "clear questions"){
       clearQuestions();
+    }
+    if (answers.fnct == "study"){
+      study();
     }
 	});
 }
@@ -162,4 +165,7 @@ var mainLoop = function() {
         });
     mainLoop();
 
+  }
+  function study() {
+    console.log("in study");
   }
