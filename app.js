@@ -169,13 +169,13 @@ var mainLoop = function() {
 
   }
   function study() {
+    var ii = 0;
     var yourAnswer = "";
     var flashCards = [];
     var arrayOfText = [];
     var lineOfData = "";
     var type = "";
     var dd   = "";
-    console.log("in study");
 //  begin read logic
     var lines = require('fs').readFileSync('log.txt', 'utf-8')
     .split(eline)
@@ -192,8 +192,8 @@ var mainLoop = function() {
       status = "Nothing to study create flash cards first";
     mainLoop();
     }
-    for (i=0;i<flashCards.length;i++) {
-      var work = flashCards[i];
+    do  {
+      var work = flashCards[ii];
       switch (work.type){
         case "basic":
         inquirer.prompt([{
@@ -225,6 +225,7 @@ var mainLoop = function() {
       
         break;
       }
-    }
+       ii++;
+    }  while (ii < flashCards.length);
   }
   
