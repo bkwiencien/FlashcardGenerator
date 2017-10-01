@@ -14,7 +14,7 @@ var mainLoop = function() {
    	name: 'fnct',
 	type: 'list',
 	message: "What do you want to do?",
-	choices: ['create basic card','create cloze card','clear questions','study','exit'],
+	choices: ['create basic card','create cloze card','clear questions','show cards','exit'],
 	}]).then((answers)=> {
 		if (answers.fnct == "create basic card"){
 			createBasicCard();
@@ -25,8 +25,8 @@ var mainLoop = function() {
     if (answers.fnct == "clear questions"){
       clearQuestions();
     }
-    if (answers.fnct == "study"){
-      study();
+    if (answers.fnct == "show cards"){
+      showCards();
     }
 	});
 }
@@ -168,7 +168,7 @@ var mainLoop = function() {
     mainLoop();
 
   }
-  function study() {
+  function showCards() {
     var ii = 0;
     var yourAnswer = "";
     var flashCards = [];
@@ -189,43 +189,18 @@ var mainLoop = function() {
     }
 //  end of read logic
     if (arrayOfText.length == 0){
-      status = "Nothing to study create flash cards first";
+      status = "Nothing to show create flash cards first";
     mainLoop();
     }
-    do  {
-      var work = flashCards[ii];
-      switch (work.type){
-        case "basic":
-        inquirer.prompt([{
-      name:'question',
-      type: 'input',
-      message: work.front
-      }]).then((answers)=> {
-        yourAnswer = answers.question;
-        if (yourAnswer == work.back){
-          numberCorrect++;
-        } else {
-          numberWrong++;
-        }
-      });  
-        break;
-        case "clozed":
-         inquirer.prompt([{
-          name:'question1',
-          type: 'input',
-          message: work.partial
-      }]).then((answers)=> {
-        yourAnswer = answers.question1;
-        if (yourAnswer == work.cloze){
-          numberCorrect++;
-        } else {
-          numberWrong++;
-        }
-      });  
-      
-        break;
+    console .log("The Flash cards created are:");
+    for  (j=0;j<flashCards.length;j++){
+      var w = flashCards[j];
+      if (w.type=="basic"){
+        console.log("type = " + w.type + " question " + w.front + " answer " + w.back);
       }
-       ii++;
-    }  while (ii < flashCards.length);
+      if (w.type=="clozen") {
+        console.log("type = " + w.type + " partial " + w.partial + " cloze " + w.cloze);
+      }
+    }
   }
   
