@@ -169,6 +169,7 @@ var mainLoop = function() {
 
   }
   function study() {
+    var yourAnswer = "";
     var flashCards = [];
     var arrayOfText = [];
     var lineOfData = "";
@@ -179,9 +180,7 @@ var mainLoop = function() {
     var lines = require('fs').readFileSync('log.txt', 'utf-8')
     .split(eline)
     .filter(Boolean);
-    console.log("lines = " +lines);
     var leno = lines.length;
-    console.log("length of lines = " + leno);
     arrayOfText = lines.slice("@");
     for (k=0;k<arrayOfText.length;k++){
       arrayOfText[k] = arrayOfText[k].replace('@','');
@@ -193,28 +192,39 @@ var mainLoop = function() {
       status = "Nothing to study create flash cards first";
     mainLoop();
     }
-    for (j=0;j<arrayOfText.length;j++){
-      console.log("arrayOfText = " + arrayOfText[j]);
-    }
-    console.log("flashCards.length = " + flashCards.length);
     for (i=0;i<flashCards.length;i++) {
-      console.log("loop through flashcards");
       var work = flashCards[i];
-      console.log(work.type);
       switch (work.type){
         case "basic":
-        askBasic(work);
+        inquirer.prompt([{
+      name:'question',
+      type: 'input',
+      message: work.front
+      }]).then((answers)=> {
+        yourAnswer = answers.question;
+        if (yourAnswer == work.back){
+          numberCorrect++;
+        } else {
+          numberWrong++;
+        }
+      });  
         break;
         case "clozed":
-        askClozen(work);
+         inquirer.prompt([{
+          name:'question1',
+          type: 'input',
+          message: work.partial
+      }]).then((answers)=> {
+        yourAnswer = answers.question1;
+        if (yourAnswer == work.cloze){
+          numberCorrect++;
+        } else {
+          numberWrong++;
+        }
+      });  
+      
         break;
       }
     }
-  }
-  function askBasic(w){
-
-  }
-  function askClozen(w) {
-    
   }
   

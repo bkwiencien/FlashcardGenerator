@@ -1,7 +1,3 @@
-{"front":"color","back":"blue","type":"basic"};
-{"front":"favorite","back":"blue","type":"basic"};
-{"front":"what is your favorite color","back":"greeen","type":"basic"};
-{"front":"what","back":"left","type":"basic"};
-{"front":"color","back":"blue","type":"basic"};
-{"front":"what","back":"1","type":"basic"};
-{"front":"who was the first president","back":"george washington","type":"basic"};
+{"front":"who freed the slaves","back":"lincoln","type":"basic"}@
+{"front":"h2o is","back":"water","type":"basic"}@
+{"fullText":"Trump is the president","cloze":"Trump","partial":"..... is the president","type":"clozen"}@
