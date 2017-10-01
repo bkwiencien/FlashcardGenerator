@@ -192,15 +192,19 @@ var mainLoop = function() {
       status = "Nothing to show create flash cards first";
     mainLoop();
     }
+    //status = "The Flash cards created are \n";
     console .log("The Flash cards created are:");
     for  (j=0;j<flashCards.length;j++){
       var w = flashCards[j];
       if (w.type=="basic"){
         console.log("type = " + w.type + " question " + w.front + " answer " + w.back);
+        //status = status + "type = " + w.type + " question " + w.front + " answer " + w.back + "\n";
       }
       if (w.type=="clozen") {
         console.log("type = " + w.type + " partial " + w.partial + " cloze " + w.cloze);
+        //status = status + "type = " + w.type + " partial " + w.partial + " cloze " + w.cloze + "\n";
       }
     }
+    mainLoop();
   }
   
