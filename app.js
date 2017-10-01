@@ -12,7 +12,7 @@ var mainLoop = function() {
    	name: 'fnct',
 	type: 'list',
 	message: "What do you want to do?",
-	choices: ['create basic card','create cloze card','exit'],
+	choices: ['create basic card','create cloze card','clear questions','exit'],
 	}]).then((answers)=> {
 		if (answers.fnct == "create basic card"){
 			createBasicCard();
@@ -20,6 +20,9 @@ var mainLoop = function() {
 		if (answers.fnct == "create cloze card"){
 			createClozeCard();
 		}
+    if (answers.fnct == "clear questions"){
+      clearQuestions();
+    }
 	});
 }
 	function createBasicCard() {
@@ -146,3 +149,17 @@ var mainLoop = function() {
        BasicCard.prototype.determineOS();
        ClozeCard.prototype.determineOS();
 	}
+  function clearQuestions() {
+    fs.writeFile("log.txt", "", "utf8", function(error) {
+            if (error) {
+                console.log(error);
+            }
+        });
+    fs.writeFile("error.txt","", "utf8", function(error) {
+            if (error) {
+                console.log(error);
+            }
+        });
+    mainLoop();
+
+  }
