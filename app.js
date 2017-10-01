@@ -168,21 +168,31 @@ var mainLoop = function() {
   }
   function study() {
     var flashCards = [];
+    var arrayOfText = [];
     var lineOfData = "";
+    var type = "";
+    var dd   = "";
     console.log("in study");
 //  begin read logic
-    var lineReader = require('readline').createInterface({
-      input: require('fs').createReadStream('log.txt')
-     });
-    console.log("here");
-    lineReader.on('line', function (line) {
-      console.log('I read this ', line);
-     var dd = JSON.parse(line);
-     flashCards.push(dd);
-    });
-//  end of read logic
-    if (flashCards.length == 0){
-      status = "Nothing to study create flash cards first";
-     // mainLoop();
+    var lines = require('fs').readFileSync('log.txt', 'utf-8')
+    .split(eline)
+    .filter(Boolean);
+    console.log("lines = " +lines);
+    var leno = lines.length;
+    console.log("length of lines = " + leno);
+    arrayOfText = lines.slice("@");
+    for (k=0;k<arrayOfText.length;k++){
+      arrayOfText[k] = arrayOfText[k].replace('@','');
+      dd  = JSON.parse(arrayOfText[k]);
+      flashCards.push(dd);
     }
+//  end of read logic
+    if (arrayOfText.length == 0){
+      status = "Nothing to study create flash cards first";
+    mainLoop();
+    }
+    for (j=0;j<arrayOfText.length;j++){
+      console.log("arrayOfText = " + arrayOfText[j]);
+    }
+    console.log("flashCards.length = " + flashCards.length);
   }
