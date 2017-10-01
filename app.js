@@ -167,5 +167,22 @@ var mainLoop = function() {
 
   }
   function study() {
+    var flashCards = [];
+    var lineOfData = "";
     console.log("in study");
+//  begin read logic
+    var lineReader = require('readline').createInterface({
+      input: require('fs').createReadStream('log.txt')
+     });
+    console.log("here");
+    lineReader.on('line', function (line) {
+      console.log('I read this ', line);
+     var dd = JSON.parse(line);
+     flashCards.push(dd);
+    });
+//  end of read logic
+    if (flashCards.length == 0){
+      status = "Nothing to study create flash cards first";
+     // mainLoop();
+    }
   }

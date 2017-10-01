@@ -15,7 +15,7 @@ function ClozeCard(text,cloze,partial) {
             type: "clozen",
         };
     this.logit = function() {
-        fs.appendFile("log.txt", JSON.stringify(data) + ';' + eline, "utf8", function(error) {
+        fs.appendFile("log.txt", JSON.stringify(data) + eline, "utf8", function(error) {
             if (error) {
                 console.log(error);
             }
