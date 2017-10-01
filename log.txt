@@ -1,3 +1,4 @@
 {"front":"who freed the slaves","back":"lincoln","type":"basic"}@
 {"front":"h2o is","back":"water","type":"basic"}@
 {"fullText":"Trump is the president","cloze":"Trump","partial":"..... is the president","type":"clozen"}@
+{"front":"Who was the wife of Sean Penn","back":"Mrs. Penn","type":"basic"}@
