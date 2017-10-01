@@ -6,6 +6,8 @@ var fs = require("fs");
 var os = require("os");
 var eline = "\n";
 var status = "";
+var numberCorrect = 0;
+var numberWrong   = 0;
 var mainLoop = function() {
  console.log(status);
  inquirer.prompt([{
@@ -195,4 +197,24 @@ var mainLoop = function() {
       console.log("arrayOfText = " + arrayOfText[j]);
     }
     console.log("flashCards.length = " + flashCards.length);
+    for (i=0;i<flashCards.length;i++) {
+      console.log("loop through flashcards");
+      var work = flashCards[i];
+      console.log(work.type);
+      switch (work.type){
+        case "basic":
+        askBasic(work);
+        break;
+        case "clozed":
+        askClozen(work);
+        break;
+      }
+    }
   }
+  function askBasic(w){
+
+  }
+  function askClozen(w) {
+    
+  }
+  
